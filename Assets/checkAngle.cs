@@ -19,7 +19,7 @@ public class checkAngle : MonoBehaviour {
     //
     public float minAppear = 3;
     public float maxAppear = 5;
-
+    int i;
     void Start()
     {
         m_MyOtherObject = GameObject.FindGameObjectWithTag("Player");
@@ -30,7 +30,7 @@ public class checkAngle : MonoBehaviour {
         backupx = transform.position.x;
         m_Angle = 0.0f;
 
-       
+        i = Random.Range(0, 1);
     }
     public bool isOver;
     public bool isStarAppear;
@@ -99,6 +99,7 @@ public class checkAngle : MonoBehaviour {
     }
 
     bool isCaculator;
+    public bool isSpike;
     //sinh ra vat moi
     void Appear()
     {
@@ -120,12 +121,39 @@ public class checkAngle : MonoBehaviour {
         
         transform.position -= moveVector * moveSpeed*10 * Time.deltaTime;
 
-        if(Vector2.Distance(transform.position, Vector2.zero) > Random.Range(minAppear, maxAppear))
+        if (isSpike)
         {
-            m_MyFirstVector = transform.position;
-            moveVector = (Vector2.zero - m_MyFirstVector).normalized;
-            isStarAppear = false;
+            float dis = Vector2.Distance(transform.position, Vector2.zero);
+            if ( i == 0)
+            {
+                if (dis > 2 && dis < 2.75)
+                {
+                    m_MyFirstVector = transform.position;
+                    moveVector = (Vector2.zero - m_MyFirstVector).normalized;
+                    isStarAppear = false;
+                }
+            }
+            else
+            {
+                if (dis > 4)
+                {
+                    m_MyFirstVector = transform.position;
+                    moveVector = (Vector2.zero - m_MyFirstVector).normalized;
+                    isStarAppear = false;
+                }
+            }
+            
         }
+        else
+        {
+            if (Vector2.Distance(transform.position, Vector2.zero) > Random.Range(minAppear, maxAppear))
+            {
+                m_MyFirstVector = transform.position;
+                moveVector = (Vector2.zero - m_MyFirstVector).normalized;
+                isStarAppear = false;
+            }
+        }
+        
     }
 
 }

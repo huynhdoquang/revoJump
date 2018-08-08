@@ -92,6 +92,8 @@ MonoBehaviour:
   ang: 0
   m_MyOtherObject: {fileID: 0}
   backupx: 0
+  minAppear: 2.75
+  maxAppear: 3.5
   isOver: 0
   isStarAppear: 0
   moveSpeed: 3
