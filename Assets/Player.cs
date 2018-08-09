@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
         if (coll.gameObject.tag == "spike")
         {
             Debug.Log("die");
+            GameController.Instance.EndGame();
         }
     }
 

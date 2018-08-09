@@ -14,7 +14,6 @@ public class coinPool : MonoBehaviour
 
     public void poolCoin(float ang)
     {
-
         GameObject coin = Instantiate(coinPrefabs);
         Debug.Log("pool");
         coin.GetComponent<checkAngle>().ang = ang - 90;
@@ -23,7 +22,7 @@ public class coinPool : MonoBehaviour
         // check khoảng cách giữa 2 spike gần nhất và khả năng nhảy qua nó 
 
 
-        if ( Mathf.Abs(ang - lastAngle ) > 45)
+        if ( (Mathf.Abs(ang - lastAngle) > 45 ) && ang < 0)
         {
             GameObject spike = Instantiate(spikePrefabs);
             spikePrefabs.GetComponent<checkAngle>().ang = ang - 180;
@@ -32,6 +31,7 @@ public class coinPool : MonoBehaviour
 
             lastAngle = ang;
         }
+
     }
 }
     

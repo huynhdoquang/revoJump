@@ -25,15 +25,25 @@ public class mainScript : MonoBehaviour {
 	}
 
 	void Update () {
-		handleJumps ();
-		handleRevolution (Time.deltaTime);
 
-        PoolingTime += Time.deltaTime;
-        if (PoolingTime > PoolTime)
+        if (GameController.Instance.isInGame)
         {
-            PoolingTime = 0;
-            gameObject.GetComponent<coinPool>().poolCoin(currentAngle);
+            handleJumps();
+            handleRevolution(Time.deltaTime);
+
+            PoolingTime += Time.deltaTime;
+            if (PoolingTime > PoolTime)
+            {
+                PoolingTime = 0;
+                gameObject.GetComponent<coinPool>().poolCoin(currentAngle);
+            }
         }
+        else
+        {
+            handleRevolution(Time.deltaTime);
+            handleJumps();
+        }
+		
 	}
 
 	void handleJumps(){
