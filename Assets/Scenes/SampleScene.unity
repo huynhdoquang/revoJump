@@ -2128,7 +2128,7 @@ TrailRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 1ebefcb8a33d13c4087da505fb84eeed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2346,12 +2346,6 @@ Prefab:
       propertyPath: m_MyOtherObject
       value: 
       objectReference: {fileID: 1785464252}
-    - target: {fileID: 212916804536673708, guid: 8b9fb1a20a59a9f46ad5155effc0ca8e,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: fdd61ec189d8ac949a693aa211410114,
-        type: 3}
     - target: {fileID: 1316410926597058, guid: 8b9fb1a20a59a9f46ad5155effc0ca8e, type: 2}
       propertyPath: m_IsActive
       value: 0
