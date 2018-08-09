@@ -28,10 +28,8 @@ public class mainScript : MonoBehaviour {
 
         if (GameController.Instance.isInGame)
         {
-            if (GameController.Instance.score > 555)
-            {
-                revolutionSpeed = -4;
-            }
+            // -4 nhanh hown -5
+            revolutionSpeed = -5 + (((float)GameController.Instance.score) / 1500); 
             handleJumps();
             handleRevolution(Time.deltaTime);
 
