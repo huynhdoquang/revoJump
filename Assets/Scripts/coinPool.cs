@@ -16,7 +16,7 @@ public class coinPool : MonoBehaviour
     public void poolCoin(float ang)
     {
         GameObject coin = Lean.Pool.LeanPool.Spawn(coinPrefabs);
-        Debug.Log("pool");
+        coin.GetComponent<checkAngle>().ResetStart();
         coin.GetComponent<checkAngle>().ang = ang - 90;
         coin.GetComponent<checkAngle>().isStarAppear = true;
 
@@ -28,9 +28,10 @@ public class coinPool : MonoBehaviour
             if (isFirst)
             {
                 GameObject spike = Lean.Pool.LeanPool.Spawn(spikePrefabs);
-                spikePrefabs.GetComponent<checkAngle>().ang = ang - 180;
-                spikePrefabs.GetComponent<checkAngle>().isStarAppear = true;
-                spikePrefabs.GetComponent<checkAngle>().isSpike = true;
+                spike.GetComponent<checkAngle>().ResetStart();
+                spike.GetComponent<checkAngle>().ang = ang - 180;
+                spike.GetComponent<checkAngle>().isStarAppear = true;
+                spike.GetComponent<checkAngle>().isSpike = true;
 
                 lastAngle = ang;
             }

@@ -19,6 +19,8 @@ public class checkAngle : MonoBehaviour {
     //
     public float minAppear = 3;
     public float maxAppear = 5;
+
+    public float moveSpeed = 1f;
     public int i;
     void Start()
     {
@@ -78,7 +80,6 @@ public class checkAngle : MonoBehaviour {
         //GUI.Label(new Rect(25, 25, 200, 40), "Angle Between Objects" + m_Angle);
     }
 
-    public float moveSpeed = 1f;
     Vector3 moveVector;
     bool over = false;
     void Disappear()
@@ -102,6 +103,20 @@ public class checkAngle : MonoBehaviour {
         }
     }
 
+    public void ResetStart()
+    {
+        //Initialise the Vector
+        m_MyFirstVector = Vector2.zero;
+        //Fetch the first GameObject's position
+        m_MyFirstVector = transform.position;
+        backupx = transform.position.x;
+        m_Angle = 0.0f;
+
+        i = Random.Range(0, 2);
+        isCaculator = false;
+        isOver = false;
+        isStarAppear = false;
+    }
     bool isCaculator;
     public bool isSpike;
     //sinh ra vat moi
