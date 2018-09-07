@@ -7,24 +7,28 @@ public class checkAngle : MonoBehaviour {
     //Use these to get the GameObject's positions
      Vector2 m_MyFirstVector;
      Vector2 m_MySecondVector;
+    //You must assign to these two GameObjects in the Inspector
+    GameObject playerObj;
 
     float m_Angle;
     public float ang;
+    float backupx;
 
-    //You must assign to these two GameObjects in the Inspector
-    public GameObject m_MyOtherObject;
 
-    public float backupx;
-
-    //
+    //distance to appear
     public float minAppear = 3;
     public float maxAppear = 5;
-
+    //speed to move out and move in
     public float moveSpeed = 1f;
-    public int i;
+
+    int i; // to decide up or down (spike)
+    
+    bool isOver; // is player over to this obj
+    public bool isStarAppear;
+
     void Start()
     {
-        m_MyOtherObject = GameObject.FindGameObjectWithTag("Player");
+        playerObj = GameObject.FindGameObjectWithTag("Player");
         //Initialise the Vector
         m_MyFirstVector = Vector2.zero;
         //Fetch the first GameObject's position
@@ -34,8 +38,22 @@ public class checkAngle : MonoBehaviour {
 
         i = Random.Range(0, 2);
     }
-    public bool isOver;
-    public bool isStarAppear;
+
+    public void ResetStart()
+    {
+        //Initialise the Vector
+        m_MyFirstVector = Vector2.zero;
+        //Fetch the first GameObject's position
+        m_MyFirstVector = transform.position;
+        backupx = transform.position.x;
+        m_Angle = 0.0f;
+
+        i = Random.Range(0, 2);
+        isCaculator = false;
+        isOver = false;
+        isStarAppear = false;
+    }
+
 
     private void Update()
     {
@@ -56,7 +74,7 @@ public class checkAngle : MonoBehaviour {
         {
             
             //Fetch the second GameObject's position
-            m_MySecondVector = m_MyOtherObject.transform.position;
+            m_MySecondVector = playerObj.transform.position;
             //Find the angle for the two Vectors
             m_Angle = Vector2.Angle(m_MyFirstVector, m_MySecondVector);
 
@@ -103,20 +121,7 @@ public class checkAngle : MonoBehaviour {
         }
     }
 
-    public void ResetStart()
-    {
-        //Initialise the Vector
-        m_MyFirstVector = Vector2.zero;
-        //Fetch the first GameObject's position
-        m_MyFirstVector = transform.position;
-        backupx = transform.position.x;
-        m_Angle = 0.0f;
-
-        i = Random.Range(0, 2);
-        isCaculator = false;
-        isOver = false;
-        isStarAppear = false;
-    }
+   
     bool isCaculator;
     public bool isSpike;
     //sinh ra vat moi

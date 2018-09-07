@@ -28,7 +28,7 @@ public class mainScript : MonoBehaviour {
 
         if (GameController.Instance.isInGame)
         {
-            // -4 nhanh hown -5
+            // -4 faster than -5
             revolutionSpeed = -5 + (((float)GameController.Instance.score) / 1500); 
             handleJumps();
             handleRevolution(Time.deltaTime);
@@ -77,6 +77,7 @@ public class mainScript : MonoBehaviour {
 		newPosition.x = totalRadius * Mathf.Cos (radians);
 		newPosition.y = totalRadius * Mathf.Sin (radians);
 		player.transform.position = newPosition;
+        //player rotation by this-self
 		player.transform.Rotate (0, 0, 360f * revolutions * elapsedTime / revolutionSpeed);
 	}
 
