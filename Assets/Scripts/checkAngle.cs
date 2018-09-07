@@ -98,7 +98,7 @@ public class checkAngle : MonoBehaviour {
         }
         if(Mathf.Abs(transform.position.x) < 1.5)
         {
-            Destroy(gameObject);
+            Lean.Pool.LeanPool.Despawn(gameObject);
         }
     }
 

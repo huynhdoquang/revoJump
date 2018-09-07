@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
             AudioController.Instance.PlayPickUpCoinSound();
             Debug.Log("+10");
             GameController.Instance.score += 10;
-            Destroy(coll.gameObject);
+            Lean.Pool.LeanPool.Despawn(coll.gameObject);
         }
 
         if (coll.gameObject.tag == "spike")
